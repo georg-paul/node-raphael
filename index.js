@@ -12,7 +12,9 @@ module.exports.generate = function generate(width, height, callback) {
         "http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1")
     paper = extractRaphael(win, doc, nav)(0, 0, width || 42, height || 42)
     if (callback) callback(paper)
-    return doc.body.firstChild && doc.body.firstChild.outerHTML || ""
+	var svg = doc.body.firstChild && doc.body.firstChild.outerHTML || ""
+	win.close()
+    return svg
 }
 
 function loadRaphael() {
